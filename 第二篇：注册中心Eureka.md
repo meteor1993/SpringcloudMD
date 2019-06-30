@@ -57,7 +57,7 @@ Eureka由两个组件组成：Eureka服务器和Eureka客户端。Eureka服务�
 
 用官方的一张图来认识一下：
 
-![](https://github.com/meteor1993/image/blob/master/springcloud/chapter2/eureka-architecture-overview?raw=true)
+![](https://github.com/meteor1993/image/blob/master/springcloud/chapter2/eureka-architecture-overview.png?raw=true)
 
 上图简要描述了Eureka的基本架构，由3个角色组成：
 
