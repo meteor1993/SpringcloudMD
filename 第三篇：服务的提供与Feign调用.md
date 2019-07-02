@@ -334,3 +334,46 @@ public class HelloController {
 
 #### 负载均衡
 
+将上面的producer复制一份，修改名称为producer2，修改pom.xml中的\<name>\</name>为producer2，修改其中的Controller：
+
+```
+package com.springcloud.producer.controller;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * Created with IntelliJ IDEA.
+ *
+ * @Date: 2019/7/2
+ * @Time: 0:02
+ * @email: inwsy@hotmail.com
+ * Description:
+ */
+@RestController
+public class HelloController {
+    @RequestMapping("/hello")
+    public String hello(@RequestParam String name) {
+        return "hello "+name+"，producer2 is ready";
+    }
+}
+```
+
+修改application.yml配置文件启动端口为8082
+
+启动我们刚复制好的producer2，这时可以看一下注册中心Eureka，我们现在已经有两个producer服务了。
+
+![](https://raw.githubusercontent.com/meteor1993/image/master/springcloud/chapter3/eureka_2.png)
+
+这时我们再去访问：http://localhost:8081/hello/spring
+
+第一次返回结果：hello spring，producer is ready
+
+第二次返回结果：hello spring，producer2 is ready
+
+连续刷新页面，两个结果会交替出现，说明注册中心提供了服务负载均衡功能。将服务数提高到N个，会发现测试结果一样，请求会自动轮询到每个服务端来处理。
+
+好了，现在可以将代码打包扔到Github上去了，欢迎大家前往Github骚扰：）
+
+[示例代码-Github](https://github.com/meteor1993/SpringCloudLearning/tree/master/chapter3 "示例代码-Github")
