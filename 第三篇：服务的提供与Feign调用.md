@@ -137,7 +137,7 @@ public class HelloController {
 
 先在可以先启动上一篇当中单机版的Eureka，再启动我们刚写好的producer服务提供者，启动成功后，访问链接http://localhost:8761/，可以看到我们的的服务提供者producer已经成功注册在注册中心上了。
 
-![](https://raw.githubusercontent.com/meteor1993/image/master/springcloud/chapter3/eureka_1.png)
+![](https://springcloud-oss.oss-cn-shanghai.aliyuncs.com/chapter3/eureka_1.png)
 
 至此，服务的提供者已经配置完成。
 
@@ -364,7 +364,7 @@ public class HelloController {
 
 启动我们刚复制好的producer2，这时可以看一下注册中心Eureka，我们现在已经有两个producer服务了。
 
-![](https://raw.githubusercontent.com/meteor1993/image/master/springcloud/chapter3/eureka_2.png)
+![](https://springcloud-oss.oss-cn-shanghai.aliyuncs.com/chapter3/eureka_2.png)
 
 这时我们再去访问：http://localhost:8081/hello/spring
 

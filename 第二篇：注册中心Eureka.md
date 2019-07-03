@@ -11,21 +11,21 @@ Eureka是Netflix开源的一款提供服务注册和发现的产品，它提供�
 
 服务A调用服务B
 
-![](https://github.com/meteor1993/image/blob/master/springcloud/chapter2/simple.png?raw=true)
+![](https://springcloud-oss.oss-cn-shanghai.aliyuncs.com/chapter2/simple.png?raw=true)
 
 有了注册中心之后，任何一个服务都不在是直连的，都需要通过注册中心去调用。
 
-![](https://github.com/meteor1993/image/blob/master/springcloud/chapter2/simple_register_center.png?raw=true)
+![](https://springcloud-oss.oss-cn-shanghai.aliyuncs.com/chapter2/simple_register_center.png?raw=true)
 
 如果是一个连续调用：
 
 服务A调用服务B，服务B调用服务C
 
-![](https://github.com/meteor1993/image/blob/master/springcloud/chapter2/simple_two.png?raw=true)
+![](https://springcloud-oss.oss-cn-shanghai.aliyuncs.com/chapter2/simple_two.png?raw=true)
 
 这里如果加上注册中心，整个调用流程就会分为两步，服务A先从注册中心请求服务B，服务B再从注册中心请求服务C
 
-![](https://github.com/meteor1993/image/blob/master/springcloud/chapter2/simple_two_register_center.png?raw=true)
+![](https://springcloud-oss.oss-cn-shanghai.aliyuncs.com/chapter2/simple_two_register_center.png?raw=true)
 
 上面的示例只是描述了两三个服务之间的互相调用，可能加上注册中心还会稍显繁琐，如果一条调用链上面有几十个服务（这个丝毫不是开玩笑哦，正常的业务流程中很可能出现这种复杂的调用过程），在工作中我就遇到过超过20个服务的互相调用，这种复杂业务场景的互相调用，如果不使用注册中心，画出来的图会连成一个网状结构，单从图上面已经很难找出服务的上下游关系了。其中如果一个服务有改动，就会牵扯到上下游多台机器的重启，整个架构设计完全耦合在一起，每次改动所需要的工作量完全超出想象。通过注册中心去注册服务，完全不在需要关心上下游机器的ip地址，由几台服务器组成，是否重启才会生效，注册中心已经帮我们把服务的注册和发现做好了，我们只需要知道注册中心在哪里，对应的服务名是什么就ok啦~~
 
@@ -59,7 +59,7 @@ Eureka由两个组件组成：Eureka服务器和Eureka客户端。Eureka服务�
 
 用官方的一张图来认识一下：
 
-![](https://github.com/meteor1993/image/blob/master/springcloud/chapter2/eureka-architecture-overview.png?raw=true)
+![](https://springcloud-oss.oss-cn-shanghai.aliyuncs.com/chapter2/eureka-architecture-overview.png?raw=true)
 
 上图简要描述了Eureka的基本架构，由3个角色组成：
 
@@ -95,7 +95,7 @@ package选择jar，java选择8，至此，基础选择已经全都选完，接�
 
 在Dependencies中找到Spring Cloud Discovery，选择Eureka Serve，结果如下图：
 
-![](https://github.com/meteor1993/image/blob/master/springcloud/chapter2/spring_initializr.png?raw=true)
+![](https://springcloud-oss.oss-cn-shanghai.aliyuncs.com/chapter2/spring_initializr.png?raw=true)
 
 最后点击下方的绿色长条按钮 **Generate the project** 进行下载，等待下载完成后，直接将压缩包解压导入我们的编辑工具idea里即可。
 
@@ -103,7 +103,7 @@ package选择jar，java选择8，至此，基础选择已经全都选完，接�
 
 基于idea创建，打开idea，首先file->new->project，选中spring Initializr，这时可以看到右侧让我们选择一个初始化的服务url，默认的就是上面的官方链接，https://start.spring.io/
 
-![](https://github.com/meteor1993/image/blob/master/springcloud/chapter2/idea_create1.png?raw=true)
+![](https://springcloud-oss.oss-cn-shanghai.aliyuncs.com/chapter2/idea_create1.png?raw=true)
 
 点击next下一步，填写和上面一样的Group、Artifact、java版本、package方式等信息，继续next下一步，选择依赖，和前面的方法的一样，在Dependencies中找到Spring Cloud Discovery，选择Eureka Serve，点击next，选择项目名称和存储路径，点击finish，静静等一会，第一个项目Eureka就新鲜出炉了~~~
 
@@ -221,7 +221,7 @@ public class EurekaApplication {
 
 增加注解@EnableEurekaServer，在这个main函数上，直接右键debug就可以启动了，启动成功如下图所示：
 
-![](https://github.com/meteor1993/image/blob/master/springcloud/chapter2/eureka.png?raw=true)
+![](https://springcloud-oss.oss-cn-shanghai.aliyuncs.com/chapter2/eureka.png?raw=true)
 
 现在单机的注册中心已经成功启动， 引申出来一个问题，注册中心是所有的服务提供者注册服务的地方，如果只有一台机器，一旦因为某些原因，引发宕机，会造成整体服务不可用，所以，这种中心服务在生产环境必须是集群化部署，如果对高可用、容灾和备份有更高的要求，还可以分机房部署，分地区部署。
 
@@ -230,11 +230,11 @@ public class EurekaApplication {
 #### 双机部署
 增加idea启动配置，点击右上角的Edit Configurations，如下图：
 
-![](https://github.com/meteor1993/image/blob/master/springcloud/chapter2/idea-config.png?raw=true)
+![](https://springcloud-oss.oss-cn-shanghai.aliyuncs.com/chapter2/idea-config.png?raw=true)
 
 在打开的窗口中新建一个springboot的启动方式，命名为Eureka1，增加启动参数Program arguments：--server.port=8080，点击apply保存，如下图：
 
-![](https://github.com/meteor1993/image/blob/master/springcloud/chapter2/idea_config2.png?raw=true)
+![](https://springcloud-oss.oss-cn-shanghai.aliyuncs.com/chapter2/idea_config2.png?raw=true)
 
 使用新创建的启动配置启动服务，现在可以看到正常启动。接下来就是修改配置文件，使两个独立的服务变为集群。
 
@@ -257,7 +257,7 @@ eureka:
 
 现在分别使用两个启动配置启动Eureka，可以看到如下图所示：
 
-![](https://github.com/meteor1993/image/blob/master/springcloud/chapter2/eureka_two.png?raw=true)
+![](https://springcloud-oss.oss-cn-shanghai.aliyuncs.com/chapter2/eureka_two.png?raw=true)
 
 红框中的内容表示我们现在已经有两个eureka服务了。
 
