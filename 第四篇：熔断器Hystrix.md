@@ -1,4 +1,4 @@
-# 跟我学SpringCloud | 第四篇：熔断器Hystrix
+# SpringCloud系列教程 | 第四篇：熔断器Hystrix
 
 ## 1. 熔断器
 #### 服务雪崩
