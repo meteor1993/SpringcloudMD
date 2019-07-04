@@ -1,5 +1,11 @@
 # SpringCloud系列教程 | 第二篇：注册中心Eureka
 
+> Springboot: 2.1.6.RELEASE
+
+> SpringCloud: Greenwich.SR1
+
+> 如无特殊说明，本系列教程全采用以上版本
+
 Eureka是Netflix开源的一款提供服务注册和发现的产品，它提供了完整的Service Registry和Service Discovery实现。也是springcloud体系中最重要最核心的组件之一。
 
 ## 注册中心的意义

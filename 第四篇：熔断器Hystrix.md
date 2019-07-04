@@ -1,5 +1,11 @@
 # SpringCloud系列教程 | 第四篇：熔断器Hystrix
 
+> Springboot: 2.1.6.RELEASE
+
+> SpringCloud: Greenwich.SR1
+
+> 如无特殊说明，本系列教程全采用以上版本
+
 ## 1. 熔断器
 #### 服务雪崩
 

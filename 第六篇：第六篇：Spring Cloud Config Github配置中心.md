@@ -1,5 +1,11 @@
 # SpringCloud系列教程 | 第六篇：Spring Cloud Config Github配置中心
 
+> Springboot: 2.1.6.RELEASE
+
+> SpringCloud: Greenwich.SR1
+
+> 如无特殊说明，本系列教程全采用以上版本
+
 随着分布式项目越来越大，勤劳的程序猿们会开始面临一个挑战，配置文件会越来越繁杂，虽然spring提供了一个鸡肋版的解决方案，spring.profiles.active，在大型的分布式项目体系中，聊胜于无吧，手动维护配置文件的痛苦，生产，UAT，测试，开发环境的隔离，额外的配置文件，如：logback.xml日志的配置文件，bootstrap.properties配置文件，当系统中有几十个服务，相应的会有上百个配置文件，简直就是史诗级的灾难大片，每次发布上线，都要手动去检查配置文件，相应的服务都需要重启，那么，有没有一种方案，可以自动更新配置，并且对版本做出相应的控制，恰好，springcloud为我们提供了这样一种工具，虽然很多方面都还不完善，配置能力比较弱，但是也给我们提供了一种思路。
 
 市面上有很多配置中心，BAT每家都出过，360的QConf、淘宝的diamond、百度的disconf都是解决这类问题。国外也有很多开源的配置中心Apache Commons Configuration、owner、cfg4j等等。这些开源的软件以及解决方案都很优秀，也存在这样或者那样的缺陷。今天我们要了解的Spring Cloud Config，可以无缝的和spring体系相结合，够方便够简单颜值高。
@@ -317,6 +323,8 @@ public class HelloController {
 启动client端，访问链接：http://localhost:8081/hello， 返回：hello dev update，说明已经正确的从server端获取到了参数。到此一个完整的服务端提供配置服务，客户端获取配置参数的例子就完成了。
 
 可以再进行一个小实验，我们再次修改springcloud-config-dev.properties中的内容为：hello dev update1，提交至github后，再次访问http://localhost:8081/hello，可以发现，返回的内容还是hello dev update，这是为什么呢？因为springboot项目只有在启动的时候才会获取配置文件的值，修改github信息后，client端并没有在次去获取，所以导致这个问题。如何去解决这个问题呢？留到下一篇我们在介绍。
+
+[示例代码-Github](https://github.com/meteor1993/SpringCloudLearning/tree/master/chapter6 "示例代码-Github")
 
 
 参考：http://www.ityouknow.com/springcloud/2017/05/22/springcloud-config-git.html
