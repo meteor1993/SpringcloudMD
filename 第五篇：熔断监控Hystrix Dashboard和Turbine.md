@@ -139,9 +139,25 @@ public class HystrixDashboardApplication {
 
 <br />
 
-**注意：**  各位看官这里一定要注意，我在这里注册了HystrixMetricsStreamServlet，在springboot1.x版本下，这里是无需生命的，在2.x版本后，这里才需要注册HystrixMetricsStreamServlet，并且显示的给出访问路径。
+**注意：**  各位看官这里一定要注意，我在这里注册了HystrixMetricsStreamServlet，在springboot1.x版本下，这里是无需注册的，在2.x版本后，这里才需要注册HystrixMetricsStreamServlet，并且显示的给出访问路径。
 
-#### 3. 测试
+#### 3. 配置文件
+```
+server:
+  port: 8081
+spring:
+  application:
+    name: spring-cloud-hystrix-dashboard
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+feign:
+  hystrix:
+    enabled: true
+```
+
+#### 4. 测试
 又到了测试时间，我们先把昨天的eureka和producer CV到今天的工作目录下，顺次启动服务，HystrixDashboard最后启动，启动完成后我们访问：http://localhost:8081/hystrix，将会看到如下界面：
 
 ![](https://springcloud-oss.oss-cn-shanghai.aliyuncs.com/chapter5/hystrix-dashboard.png)
