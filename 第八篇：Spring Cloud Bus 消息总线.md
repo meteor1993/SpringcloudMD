@@ -125,13 +125,13 @@ spring:
         git:
           uri: https://github.com/meteor1993/SpringCloudLearning
           search-paths: chapter6/springcloud-config
-          username: inwsy@hotmail.com
-          password: wsy136736247.
+          username: 
+          password: 
   rabbitmq:
-    host: 101.132.124.125
+    host: 217.0.0。1
     port: 5672
-    username: admin
-    password: wsy@123456
+    username: 
+    password: 
 management:
   endpoints:
     web:
