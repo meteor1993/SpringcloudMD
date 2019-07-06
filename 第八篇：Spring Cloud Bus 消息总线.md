@@ -158,4 +158,6 @@ curl -X POST http://localhost:8081/actuator/bus-refresh
 
 执行完成后，依次访问两个客户端，返回：hello im dev update。说明三个客户端均已经拿到了最新配置文件的信息，这样我们就实现了上图中的示例。
 
+[示例代码-Github](https://github.com/meteor1993/SpringCloudLearning/tree/master/chapter8 "示例代码-Github")
+
 参考：http://www.ityouknow.com/springcloud/2017/05/26/springcloud-config-eureka-bus.html
