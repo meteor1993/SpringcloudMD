@@ -346,7 +346,7 @@ eureka:
 
 我们实际使用Zuul的方式如上图，不同的客户端使用不同的负载将请求分发到后端的Zuul，Zuul在通过Eureka调用后端服务，最后对外输出。因此为了保证Zuul的高可用性，前端可以同时启动多个Zuul实例进行负载，在Zuul的前端使用Nginx或者F5进行负载转发以达到高可用性。
 
-[示例代码-Github](https://github.com/meteor1993/SpringCloudLearning/tree/master/chapter10/Eureka "示例代码-Github")
+[示例代码-Github](https://github.com/meteor1993/SpringCloudLearning/tree/master/chapter10 "示例代码-Github")
 
 参考：
 http://www.ityouknow.com/springcloud/2018/01/20/spring-cloud-zuul.html
