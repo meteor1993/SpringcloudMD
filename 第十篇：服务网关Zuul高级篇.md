@@ -257,6 +257,7 @@ import java.io.InputStream;
  * @email: inwsy@hotmail.com
  * Description:
  */
+ @Component
 public class ProducerFallback implements FallbackProvider {
 
     private final Logger logger = LoggerFactory.getLogger(FallbackProvider.class);
@@ -317,12 +318,35 @@ public class ProducerFallback implements FallbackProvider {
 
 当服务出现异常时，打印相关异常信息，并返回”The service is unavailable.”。
 
+需要注意点，这里我们需要将Eureka的配置文件修改一下：
+```
+server:
+  port: 8761
+spring:
+  application:
+    name: eureka-serve
+eureka:
+#  server:
+#    enable-self-preservation: false
+  client:
+    register-with-eureka: false
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
+```
+
+将Eureka的自我保护模式打开，如果这里不开启自我保护模式，producer一停止服务，这个服务直接在Eureka下线，Zuul会直接报错找不到对应的producer服务。
+
 我们顺次启动这三个服务。
 
+现在打开浏览器，访问链接：http://localhost:8080/spring-cloud-producer/hello?name=spring&token=123， 可以看到页面正常返回：hello spring，producer is ready，现在我们把producer这个服务停下，再刷新下页面，可以看到页面返回：The service is unavailable.。这样我们熔断也测试成功。
 
+## 6. Zuul高可用
 
+![](https://springcloud-oss.oss-cn-shanghai.aliyuncs.com/chapter10/zuul-case.png)
 
+我们实际使用Zuul的方式如上图，不同的客户端使用不同的负载将请求分发到后端的Zuul，Zuul在通过Eureka调用后端服务，最后对外输出。因此为了保证Zuul的高可用性，前端可以同时启动多个Zuul实例进行负载，在Zuul的前端使用Nginx或者F5进行负载转发以达到高可用性。
 
+[示例代码-Github](https://github.com/meteor1993/SpringCloudLearning/tree/master/chapter10/Eureka "示例代码-Github")
 
 参考：
 http://www.ityouknow.com/springcloud/2018/01/20/spring-cloud-zuul.html
