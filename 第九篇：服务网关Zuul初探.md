@@ -219,7 +219,7 @@ eureka:
 
 到此zuul的基本使用我们就聊完了。关于zuul高级使用，我们下篇再来介绍。
 
-[示例代码-Github](https://github.com/meteor1993/SpringCloudLearning/tree/master/chapter9/Eureka "示例代码-Github")
+[示例代码-Github](https://github.com/meteor1993/SpringCloudLearning/tree/master/chapter9 "示例代码-Github")
 
 <br />
 
