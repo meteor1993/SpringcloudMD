@@ -1,5 +1,11 @@
 # SpringCloud系列教程 | 第十篇：服务网关Zuul高级篇
 
+> Springboot: 2.1.6.RELEASE
+
+> SpringCloud: Greenwich.SR1
+
+> 如无特殊说明，本系列教程全采用以上版本
+
 上一篇我们主要聊到了Zuul的使用方式，以及自动转发机制，其实Zuul还有更多的使用姿势，比如：鉴权、流量转发、请求统计等。
 
 ## 1. Zuul的核心
