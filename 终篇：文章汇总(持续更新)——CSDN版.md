@@ -32,6 +32,8 @@ Spring Cloud Greenwich.SR1; Spring Boot 2.1.6.RELEASE
 
 * [跟我学SpringCloud | 第十一篇：使用Spring Cloud Sleuth和Zipkin进行分布式链路跟踪](https://blog.csdn.net/meteor_93/article/details/95041171)
 
+* [跟我学SpringCloud | 第十二篇：Spring Cloud Gateway初探](https://blog.csdn.net/meteor_93/article/details/95254642)
+
 * 未完，持续更新中。。。
 
 ## Spring Cloud Alibaba
